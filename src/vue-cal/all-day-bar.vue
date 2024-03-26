@@ -22,11 +22,11 @@
 </template>
 
 <script>
-import Cell from './cell.vue'
+import Cell from "./cell.vue";
 
 export default {
-  inject: ['vuecal', 'view', 'editEvents'],
-  components: { 'vuecal-cell': Cell },
+  inject: ["vuecal", "view", "editEvents"],
+  components: { "vuecal-cell": Cell },
   props: {
     // Vue-cal main component options (props).
     options: { type: Object, required: true },
@@ -34,14 +34,17 @@ export default {
     label: { type: String, required: true },
     daySplits: { type: Array, default: () => [] },
     shortEvents: { type: Boolean, default: true },
-    height: { type: String, default: '' },
-    cellOrSplitMinWidth: { type: Number, default: null }
+    height: { type: String, default: "" },
+    cellOrSplitMinWidth: { type: Number, default: null },
   },
 
   computed: {
-    hasCellOrSplitWidth () {
-      return !!(this.options.minCellWidth || (this.daySplits.length && this.options.minSplitWidth))
-    }
-  }
-}
+    hasCellOrSplitWidth() {
+      return !!(
+        this.options.minCellWidth ||
+        (this.daySplits.length && this.options.minSplitWidth)
+      );
+    },
+  },
+};
 </script>

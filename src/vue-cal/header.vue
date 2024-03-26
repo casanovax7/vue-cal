@@ -66,10 +66,18 @@
 </template>
 
 <script>
-import WeekdaysHeadings from './weekdays-headings.vue'
+import WeekdaysHeadings from "./weekdays-headings.vue";
 
 export default {
-  inject: ['vuecal', 'previous', 'next', 'switchView', 'updateSelectedDate', 'modules', 'view'],
+  inject: [
+    "vuecal",
+    "previous",
+    "next",
+    "switchView",
+    "updateSelectedDate",
+    "modules",
+    "view",
+  ],
   components: { WeekdaysHeadings },
   props: {
     // Vuecal main component options (props).
@@ -79,48 +87,53 @@ export default {
     daySplits: { type: Array, default: () => [] },
     viewProps: { type: Object, default: () => ({}) },
     weekDays: { type: Array, default: () => [] },
-    switchToNarrowerView: { type: Function, default: () => {} }
+    switchToNarrowerView: { type: Function, default: () => {} },
   },
 
   data: () => ({
-    highlightedControl: null
+    highlightedControl: null,
   }),
 
   methods: {
-    goToToday () {
+    goToToday() {
       // Last midnight.
-      this.updateSelectedDate(new Date(new Date().setHours(0, 0, 0, 0)))
+      this.updateSelectedDate(new Date(new Date().setHours(0, 0, 0, 0)));
     },
 
-    switchToBroaderView () {
-      this.transitionDirection = 'left'
+    switchToBroaderView() {
+      this.transitionDirection = "left";
 
-      if (this.broaderView) this.switchView(this.broaderView)
-    }
+      if (this.broaderView) this.switchView(this.broaderView);
+    },
   },
 
   computed: {
     transitionDirection: {
-      get () {
-        return this.vuecal.transitionDirection
+      get() {
+        return this.vuecal.transitionDirection;
       },
-      set (direction) {
-        this.vuecal.transitionDirection = direction
-      }
+      set(direction) {
+        this.vuecal.transitionDirection = direction;
+      },
     },
-    broaderView () {
-      const { enabledViews } = this.vuecal
-      return enabledViews[enabledViews.indexOf(this.view.id) - 1]
+    broaderView() {
+      const { enabledViews } = this.vuecal;
+      return enabledViews[enabledViews.indexOf(this.view.id) - 1];
     },
-    showDaySplits () {
-      return this.view.id === 'day' && this.hasSplits && this.options.stickySplitLabels && !this.options.minSplitWidth
+    showDaySplits() {
+      return (
+        this.view.id === "day" &&
+        this.hasSplits &&
+        this.options.stickySplitLabels &&
+        !this.options.minSplitWidth
+      );
     },
     // Drag & drop module.
-    dnd () {
-      return this.modules.dnd
-    }
-  }
-}
+    dnd() {
+      return this.modules.dnd;
+    },
+  },
+};
 </script>
 
 <style lang="scss">
@@ -166,7 +179,9 @@ export default {
     line-height: 1.3;
     min-height: 2em;
 
-    .vuecal--xsmall & {font-size: 1.3em;}
+    .vuecal--xsmall & {
+      font-size: 1.3em;
+    }
   }
 
   &__title {
@@ -179,7 +194,9 @@ export default {
       border: none;
     }
     button.slide-fade--left-leave-active,
-    button.slide-fade--right-leave-active {width: 100%;}
+    button.slide-fade--right-leave-active {
+      width: 100%;
+    }
   }
 
   &__today-btn {
@@ -207,8 +224,12 @@ export default {
     // Non-breakable spaces are added around the default angle icon to make it larger.
     white-space: nowrap;
 
-    &--prev {margin-left: 0.6em;}
-    &--next {margin-right: 0.6em;}
+    &--prev {
+      margin-left: 0.6em;
+    }
+    &--next {
+      margin-right: 0.6em;
+    }
 
     i.angle {
       display: inline-block;
@@ -218,7 +239,9 @@ export default {
       transform: rotate(-45deg);
     }
 
-    &--prev i.angle {border-width: 2px 0 0 2px;}
+    &--prev i.angle {
+      border-width: 2px 0 0 2px;
+    }
   }
 
   // Pulse header buttons when dragging over with an event.
@@ -229,10 +252,13 @@ export default {
     background-color: rgba(0, 0, 0, 0.04);
 
     // Prevent event bubbling on hover and move.
-    * {pointer-events: none;}
+    * {
+      pointer-events: none;
+    }
 
-    &:before, &:after {
-      content: '';
+    &:before,
+    &:after {
+      content: "";
       background-color: inherit;
       animation: sonar 0.8s infinite ease-out;
       position: absolute;
@@ -264,7 +290,10 @@ export default {
 // Animations.
 //==================================//
 @keyframes sonar {
-  0%, 20% {opacity: 1;}
+  0%,
+  20% {
+    opacity: 1;
+  }
   100% {
     transform: scale(2.5);
     opacity: 0;
@@ -274,11 +303,18 @@ export default {
 // Media queries.
 //==================================//
 @media screen and (max-width: 450px) {
-  .vuecal__title {font-size: 0.9em;}
-  .vuecal__view-btn {padding-left: 0.6em;padding-right: 0.6em;}
+  .vuecal__title {
+    font-size: 0.9em;
+  }
+  .vuecal__view-btn {
+    padding-left: 0.6em;
+    padding-right: 0.6em;
+  }
 }
 
 @media screen and (max-width: 350px) {
-  .vuecal__view-btn {font-size: 1.1em;}
+  .vuecal__view-btn {
+    font-size: 1.1em;
+  }
 }
 </style>

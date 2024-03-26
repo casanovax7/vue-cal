@@ -1,6 +1,27 @@
 {
-  "weekDays": ["Esmaspäev", "Teisipäev", "Kolmapäev", "Neljapäev", "Reede", "Laupäev", "Pühapäev"],
-  "months": ["Jaanuar", "Veebruar", "Märts", "Aprill", "Mai", "Juuni", "Juuli", "August", "September", "Oktoober", "November", "Detsember"],
+  "weekDays": [
+    "Esmaspäev",
+    "Teisipäev",
+    "Kolmapäev",
+    "Neljapäev",
+    "Reede",
+    "Laupäev",
+    "Pühapäev"
+  ],
+  "months": [
+    "Jaanuar",
+    "Veebruar",
+    "Märts",
+    "Aprill",
+    "Mai",
+    "Juuni",
+    "Juuli",
+    "August",
+    "September",
+    "Oktoober",
+    "November",
+    "Detsember"
+  ],
   "years": "Aastad",
   "year": "Aasta",
   "month": "Kuu",
